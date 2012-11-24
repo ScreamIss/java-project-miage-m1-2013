@@ -1,21 +1,31 @@
 package root.plagin.gui;
 
+import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.EventQueue;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.File;
 
+import javax.swing.JButton;
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JMenuBar;
-import javax.swing.JTextPane;
-import javax.swing.JMenu;
-import javax.swing.JButton;
+import javax.swing.JTable;
 import javax.swing.SwingConstants;
-import java.awt.Color;
-import java.awt.Font;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
+import javax.swing.filechooser.FileNameExtensionFilter;
+
+/**
+ * 
+ * @author VadymPivak
+ *
+ */
 
 public class RootPlaginWindow {
 
 	private JFrame frmTableur;
+	private JTable table;
 
 	/**
 	 * Launch the application.
@@ -33,8 +43,8 @@ public class RootPlaginWindow {
 		});
 	}
 
-	/**
-	 * Create the application.
+	/*
+	 * * Create the application.
 	 */
 	public RootPlaginWindow() {
 		initialize();
@@ -48,33 +58,47 @@ public class RootPlaginWindow {
 		frmTableur.setTitle("TABLEUR");
 		frmTableur.setBounds(100, 100, 450, 300);
 		frmTableur.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
+
 		JMenuBar menuBar = new JMenuBar();
 		frmTableur.setJMenuBar(menuBar);
-		
+
 		JButton btnAddplagin = new JButton("AddPlagin");
 		btnAddplagin.setFont(new Font("Tahoma", Font.BOLD, 11));
 		btnAddplagin.setForeground(new Color(51, 153, 102));
 		menuBar.add(btnAddplagin);
-		
+
 		JButton btnInstallplagin = new JButton("InstallPlagin");
 		btnInstallplagin.setFont(new Font("Tahoma", Font.BOLD, 11));
-		btnInstallplagin.setForeground(new Color(255, 255, 0));
+		btnInstallplagin.setForeground(new Color(102, 0, 204));
 		btnInstallplagin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 			}
 		});
 		btnInstallplagin.setHorizontalAlignment(SwingConstants.LEFT);
 		menuBar.add(btnInstallplagin);
-		
+
 		JButton btnDeleteplagin = new JButton("DeletePlagin");
 		btnDeleteplagin.setFont(new Font("Tahoma", Font.BOLD, 11));
 		btnDeleteplagin.setForeground(new Color(255, 0, 0));
-		btnDeleteplagin.addActionListener(new ActionListener() {
+
+
+		btnInstallplagin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				JFileChooser chooser = new JFileChooser();
+			    FileNameExtensionFilter filter = new FileNameExtensionFilter("jar","zip");
+			    chooser.setFileFilter(filter);
+			    int returnVal = chooser.showOpenDialog(table);
+			    if(returnVal == JFileChooser.APPROVE_OPTION) {
+			       System.out.println("You chose to open this file: " +
+			            chooser.getSelectedFile().getName());
+			    }
 			}
 		});
+
 		menuBar.add(btnDeleteplagin);
+
+		table = new JTable();
+		frmTableur.getContentPane().add(table, BorderLayout.CENTER);
 	}
 
 }
