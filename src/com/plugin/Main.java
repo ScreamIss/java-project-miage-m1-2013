@@ -3,8 +3,6 @@
  */
 package com.plugin;
 
-
-
 import java.util.logging.Logger;
 
 import com.plugin.root.RootPlaginWindow;
