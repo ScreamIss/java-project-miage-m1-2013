@@ -1,4 +1,4 @@
-package com.plagin.utils;
+package com.plugin.activator.utils;
 import java.io.File;
 import java.io.FilenameFilter;
 import java.util.regex.Matcher;
