@@ -3,8 +3,8 @@
  */
 package com.plugin;
 
-import java.util.logging.Logger;
-
+import org.apache.log4j.Logger;
+import org.apache.log4j.PropertyConfigurator;
 import com.plugin.root.RootPlaginWindow;
 
 /**
